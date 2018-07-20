@@ -1,0 +1,26 @@
+{
+  "name": "blog-api-challenge",
+  "version": "1.0.0",
+  "description": "Thinkful Blog-Api-Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Btan579/blog-api-challenge.git"
+  },
+  "author": "Brendan Tanner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Btan579/blog-api-challenge/issues"
+  },
+  "homepage": "https://github.com/Btan579/blog-api-challenge#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.4",
+    "morgan": "^1.9.0",
+    "uuid": "^3.3.2"
+  }
+}
