@@ -57,9 +57,9 @@ postSchema.methods.serialize = function () {
     };
 };
 
-
-const blogPost = mongoose.model("post", postSchema);
 var Author = mongoose.model('Author', authorSchema);
+const blogPost = mongoose.model("post", postSchema);
+
 
 
 module.exports = {
