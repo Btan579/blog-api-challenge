@@ -11,9 +11,9 @@ const {
 } = require("./config");
 
 const {
-    blogPost,
-    Author
-} = require("./models");
+     Author,
+     BlogPost
+    } = require("./models");
 
 const app = express();
 
@@ -139,7 +139,7 @@ app.put('/authors/:id', (req, res) => {
 
 
 app.delete('/authors/:id', (req, res) => {
-    blogPost
+    BlogPost
         .remove({
             author: req.params.id
         })
@@ -163,7 +163,7 @@ app.delete('/authors/:id', (req, res) => {
 
 
 app.get('/posts', (req, res) => {
-    blogPost
+    BlogPost
         .find()
         .then(posts => {
             res.json(posts.map(post => {
@@ -185,9 +185,9 @@ app.get('/posts', (req, res) => {
 
 
 app.get("/posts/:id", (req, res) => {
-    blogPost
+    BlogPost
         .findById(req.params.id)
-        .then(blogpost => {
+        .then(post => {
             res.json({
                 id: post._id,
                 author: post.authorName,
@@ -219,18 +219,18 @@ app.post('/posts', (req, res) => {
         .findById(req.body.author_id)
         .then(author => {
             if (author) {
-                blogPost
+                BlogPost
                     .create({
                         title: req.body.title,
                         content: req.body.content,
                         author: req.body.id
                     })
-                    .then(blogPost => res.status(201).json({
-                        id: blogpost.id,
+                    .then(blogpost => res.status(201).json({
+                        id: blogPost.id,
                         author: `${author.firstName} ${author.lastName}`,
-                        content: blogpost.content,
-                        title: blogpost.title,
-                        comments: blogpost.comments
+                        content: blogPost.content,
+                        title: blogPost.title,
+                        comments: blogPost.comments
                     }))
                     .catch(err => {
                         console.error(err);
@@ -276,16 +276,16 @@ app.put("/posts/:id", (req, res) => {
     });
 
 
-    blogPost
+    BlogPost
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
         }, {
             new: true
         })
-        .then(toUpdateblogpost => res.status(200).json({
-            id: toUpdateblogpost.id,
-            title: toUpdateblogpost.title,
-            content: toUpdateblogpost.content
+        .then(toUpdateBlogpost => res.status(200).json({
+            id: toUpdateBlogpost.id,
+            title: toUpdateBlogpost.title,
+            content: toUpdateBlogpost.content
         }))
         .catch(err => res.status(500).json({
             message: "Internal server error"
@@ -294,7 +294,7 @@ app.put("/posts/:id", (req, res) => {
 
 
 app.delete("/posts/:id", (req, res) => {
-    blogPost
+    BlogPost
         .findByIdAndRemove(req.params.id)
         .then(() => {
             console.log(`Deleted blog post with id \`${req.params.id}\``);
