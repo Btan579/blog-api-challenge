@@ -24,6 +24,7 @@ app.get('/authors', (req, res) => {
     Author
         .find()
         .then(authors => {
+            console.log(authors);
             res.json(authors.map(author => {
                 return {
                     id: author._id,
