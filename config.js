@@ -1,7 +1,6 @@
 "use strict";
 
-exports.DATABASE_URL =
-    process.env.DATABASE_URL || "mongodb://localhost/blogs-app";
+exports.DATABASE_URL = process.env.DATABASE_URL || "mongodb://localhost/blogs-app";
 
 exports.PORT = process.env.PORT || 8080;
 // mongoimport --db blogs-app --collection posts --drop --file C:/Users/btan/Projects/blog-api-challenge/blog-database/seed-data.json
